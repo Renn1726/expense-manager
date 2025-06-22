@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gerenciador de Gastos Pessoais</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header Section -->
+      <header class="header">
+        <h1 class="app-title">Gerenciador de Gastos Pessoais</h1>
+        <p class="app-subtitle">Controle seus gastos com facilidade</p>
+      </header>
+
+      <!-- Summary Section -->
+      <section class="summary-section">
+        <div class="summary-card">
+          <h3>Total Mensal</h3>
+          <div class="summary-amount" id="monthlyTotal">R$ 0,00</div>
+        </div>
+        <div class="summary-card">
+          <h3>Total de Gastos</h3>
+          <div class="summary-amount" id="totalExpenses">R$ 0,00</div>
+        </div>
+      </section>
+
+      <!-- Category Summary Section -->
+      <section class="category-summary">
+        <h3>Gastos por Categoria</h3>
+        <div class="category-list" id="categoryList">
+          <div class="empty-state">Nenhum gasto ainda</div>
+        </div>
+      </section>
+
+      <!-- Add Expense Form -->
+      <section class="form-section">
+        <h2>Adicionar Novo Gasto</h2>
+        <form id="expenseForm" class="expense-form">
+          <div class="form-group">
+            <label for="description">Descrição</label>
+            <input
+              type="text"
+              id="description"
+              name="description"
+              required
+              placeholder="Digite a descrição do gasto"
+            />
+            <span class="error-message" id="descriptionError"></span>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="amount">Valor (R$)</label>
+              <input
+                type="number"
+                id="amount"
+                name="amount"
+                step="0.01"
+                min="0.01"
+                required
+                placeholder="0,00"
+              />
+              <span class="error-message" id="amountError"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="category">Categoria</label>
+              <select id="category" name="category" required>
+                <option value="">Selecione uma categoria</option>
+                <option value="alimentacao">Alimentação</option>
+                <option value="transporte">Transporte</option>
+                <option value="entretenimento">Entretenimento</option>
+                <option value="compras">Compras</option>
+                <option value="contas">Contas e Utilidades</option>
+                <option value="saude">Saúde</option>
+                <option value="educacao">Educação</option>
+                <option value="viagem">Viagem</option>
+                <option value="outros">Outros</option>
+              </select>
+              <span class="error-message" id="categoryError"></span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="date">Data</label>
+            <input type="date" id="date" name="date" required />
+            <span class="error-message" id="dateError"></span>
+          </div>
+
+          <button type="submit" class="btn-primary">Adicionar Gasto</button>
+        </form>
+      </section>
+
+      <!-- Expenses List -->
+      <section class="expenses-section">
+        <div class="section-header">
+          <h2>Gastos Recentes</h2>
+          <div class="expenses-count">
+            <span id="expensesCount">0 gastos</span>
+          </div>
+        </div>
+
+        <div class="expenses-list" id="expensesList">
+          <div class="empty-state">
+            <div class="empty-icon">💰</div>
+            <h3>Nenhum gasto ainda</h3>
+            <p>Comece adicionando seu primeiro gasto acima</p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Success/Error Toast -->
+    <div class="toast" id="toast">
+      <span class="toast-message" id="toastMessage"></span>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
